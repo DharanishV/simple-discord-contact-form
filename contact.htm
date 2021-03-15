@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/contactStyles.css">
+    <title>Contact Form</title>
+</head>
+<body>
+    <script>
+        formsubmit = function(){
+            document.getElementById("result").innerHTML = "";
+
+            var xhttp = new XMLHttpRequest();
+            
+            var name = document.getElementById("name").value;
+            var email = document.getElementById("email").value;
+            xhttp.open("POST","http://djangobackend007.herokuapp.com",true);
+            xhttp.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
+            xhttp.send("name="+name+"&email="+email);
+            xhttp.onload = function(){
+                document.getElementById("result").innerHTML = "sucessfully submitted!";
+            }
+            xhttp.onerror = () => {
+                document.getElementById("result").innerHTML = "submit failed!";
+            }
+            return false;
+        }
+    </script>
+
+    <form onsubmit="return formsubmit()" method="post">
+        <input type="text" name="name" id="name" placeholder="Name" />
+        <input type="email" name="email" id="email" placeholder="Email ID" />
+        <input type="submit" id="submit" value="submit" />
+        <p id="result"></p>
+    </form>
+</body>
+</html>
