@@ -16,7 +16,7 @@
             
             var name = document.getElementById("name").value;
             var email = document.getElementById("email").value;
-            xhttp.open("POST","http://djangobackend007.herokuapp.com",true);
+            xhttp.open("POST","https://djangobackend007.herokuapp.com",true);
             xhttp.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
             xhttp.send("name="+name+"&email="+email);
             xhttp.onload = function(){
